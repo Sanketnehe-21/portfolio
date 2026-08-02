@@ -7,6 +7,7 @@ import WorldSplashOverlay from './WorldSplashOverlay';
 import CustomCursor from './CustomCursor';
 import WorldInteractionsLayer from './WorldInteractionsLayer';
 import TsushimaAtmospheric3D from './TsushimaAtmospheric3D';
+import WorldTutorialModal from './WorldTutorialModal';
 import MinecraftHotbar from './MinecraftHotbar';
 import GtaGpsWidget from './GtaGpsWidget';
 import MinecraftAchievementToast from './MinecraftAchievementToast';
@@ -64,6 +65,9 @@ function PortfolioMain() {
     <div className="w-full min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] font-body relative selection:bg-[var(--accent-primary)] selection:text-white overflow-x-hidden">
       {/* CUSTOM WORLD GAME MOUSE CURSOR */}
       <CustomCursor />
+
+      {/* INTERACTIVE GAME WORLD MECHANICS TUTORIAL MODAL */}
+      <WorldTutorialModal />
 
       {/* GAME WORLD INTERACTIVE MECHANICS LAYER */}
       <WorldInteractionsLayer />
