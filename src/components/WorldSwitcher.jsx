@@ -9,7 +9,7 @@ export default function WorldSwitcher() {
     <div
       role="region"
       aria-label="Switch portfolio theme world"
-      className="pointer-events-auto flex items-center bg-[var(--kraft)]/90 backdrop-blur-md border-2 border-[var(--border-color)] p-1 rounded-full shadow-lg"
+      className="pointer-events-auto flex items-center bg-[var(--card-surface)]/90 backdrop-blur-md border-2 border-[var(--card-border)] p-1 rounded-full shadow-lg transition-colors duration-400"
     >
       {Object.values(WORLDS).map((w) => {
         const isActive = world === w.id;
@@ -18,16 +18,16 @@ export default function WorldSwitcher() {
             key={w.id}
             onClick={() => setWorld(w.id)}
             aria-pressed={isActive}
-            className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full font-pixel text-xs transition-all duration-300 ${
+            className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full font-label text-xs transition-all duration-300 ${
               isActive
                 ? 'text-white font-bold shadow-md'
-                : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
+                : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
             }`}
           >
             {isActive && (
               <motion.div
                 layoutId="world-active-bg"
-                className="absolute inset-0 rounded-full bg-[var(--wood)] border border-[var(--border-color)] z-0"
+                className="absolute inset-0 rounded-full bg-[var(--accent-primary)] border border-white/40 z-0 shadow-md"
                 transition={{ type: 'spring', stiffness: 350, damping: 26 }}
               />
             )}

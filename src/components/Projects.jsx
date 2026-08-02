@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Tape } from './ScrapbookComponents';
+import ParallaxGlassCard from './ParallaxGlassCard';
 
 export const projects = [
   {
@@ -102,26 +103,21 @@ export default function Projects() {
       <div className="w-full">
         {/* Section Header */}
         <div className="mb-14 text-center max-w-2xl mx-auto">
-          <div className="font-pixel text-xs text-[var(--gold)] uppercase tracking-wider mb-2 flex items-center justify-center gap-2">
+          <div className="font-label text-xs text-[var(--accent-secondary)] uppercase tracking-wider mb-2 flex items-center justify-center gap-2 font-bold">
             <span>🛠️</span> CRAFTING TABLE BUILDS
           </div>
-          <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[var(--ink)]">
+          <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[var(--text-primary)]">
             Production Apps & Open Source
           </h2>
-          <p className="font-body text-base text-[var(--ink-secondary)] mt-2">
+          <p className="font-body text-base text-[var(--text-secondary)] mt-2">
             Production React Native applications, published npm packages, and full-stack systems built for performance and native user experience.
           </p>
         </div>
 
-        {/* Projects Grid — Edge-to-Edge Fluid Full Screen */}
+        {/* Projects Grid — 3D Parallax Glass Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full">
           {projects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-              className="bg-[var(--paper-raised)] border-2 border-[var(--border-color)] rounded-md p-6 shadow-md relative flex flex-col justify-between w-full"
-            >
+            <ParallaxGlassCard key={project.id} className="p-6">
               <Tape variant={idx % 2 === 0 ? 'kraft' : 'gold'} position="top-right" />
 
               <div>
@@ -135,14 +131,14 @@ export default function Projects() {
                   </span>
                 </div>
 
-                <h3 className="font-heading text-xl font-bold text-[var(--ink)] mb-1">
+                <h3 className="font-heading text-xl font-bold text-white mb-1.5 drop-shadow-md">
                   {project.title}
                 </h3>
-                <div className="font-pixel text-[10px] text-[var(--gold)] mb-3">
+                <div className="font-label text-xs font-bold text-[var(--accent-secondary)] mb-3 tracking-wide">
                   {project.subtitle}
                 </div>
 
-                <p className="font-body text-xs text-[var(--ink-secondary)] leading-relaxed mb-4">
+                <p className="font-body text-xs text-[var(--text-secondary)] leading-relaxed mb-4">
                   {project.description}
                 </p>
 
@@ -150,7 +146,7 @@ export default function Projects() {
                 {project.highlights && (
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.highlights.map((h, i) => (
-                      <span key={i} className="font-mono text-[10px] px-2 py-0.5 bg-[var(--kraft)] text-[var(--ink)] rounded border border-[var(--border-color)]">
+                      <span key={i} className="font-mono text-[10px] font-semibold px-2 py-0.5 bg-black/60 text-[var(--text-secondary)] rounded border border-[var(--card-border)] shadow-inner">
                         ✓ {h}
                       </span>
                     ))}
@@ -158,11 +154,11 @@ export default function Projects() {
                 )}
               </div>
 
-              <div>
+              <div className="mt-auto">
                 {/* Tech Pills */}
-                <div className="flex flex-wrap gap-1 mb-4 pt-3 border-t border-dashed border-[var(--border-color)]">
+                <div className="flex flex-wrap gap-1.5 mb-4 pt-3 border-t border-dashed border-[var(--card-border)]/70">
                   {project.tech.map((t, i) => (
-                    <span key={i} className="pixel-badge font-normal text-[9px]">
+                    <span key={i} className="pixel-badge font-normal text-[9.5px]">
                       {t}
                     </span>
                   ))}
@@ -190,7 +186,7 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </ParallaxGlassCard>
           ))}
         </div>
       </div>

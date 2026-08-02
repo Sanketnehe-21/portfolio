@@ -1,43 +1,41 @@
 /* =========================================================
-   MULTI-WORLD GAMING PORTFOLIO v2 — BALANCED DARK OVERLAY FOR READABILITY
+   MULTI-WORLD GAMING PORTFOLIO v2 — DYNAMIC CARD SYSTEM
    ========================================================= */
 
 :root, [data-world="tsushima"] {
-  /* 🍁 TSUSHIMA — HIGH CONTRAST DUSK MAPLE */
+  /* 🍁 GHOST OF TSUSHIMA — HANDCRAFTED PARCHMENT & INK */
   --bg-base: #0E0C0A;
   --bg-secondary: #1C1814;
-  --card-surface: rgba(24, 18, 14, 0.94);
-  --card-parchment: #F7EEDC;
-  --border-color: #D4AF37;
-  --text-primary: #FFFFFF;
-  --text-parchment: #1A140E;
-  --text-secondary: #F5E5C8;
-  --text-muted: #D4C3A3;
-  --accent-primary: #FF3B30;
-  --accent-secondary: #FFD700;
-  --accent-tertiary: #52B788;
-  --live-success: #FFD700;
+  --card-surface: rgba(36, 26, 20, 0.96);
+  --card-border: #8A6D3D;
+  --card-glow: rgba(201, 162, 39, 0.35);
+  --text-primary: #EDE3D0;
+  --text-secondary: #F3E5C8;
+  --text-muted: #B99B6B;
+  --accent-primary: #B23A2E;
+  --accent-secondary: #C9A227;
+  --accent-tertiary: #4A5A4E;
+  --card-radius: 6px;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'Lora', 'Noto Serif', serif;
   --font-label: 'Cormorant Garamond', serif;
 }
 
 [data-world="minecraft"] {
-  /* 🟩 MINECRAFT — HIGH CONTRAST GOLDEN HOUR */
+  /* 🟩 MINECRAFT — DEEPSLATE & EMERALD MATERIALS */
   --bg-base: #141C10;
   --bg-secondary: #1E2B18;
-  --card-surface: rgba(28, 20, 12, 0.94);
-  --card-parchment: #F5E6C8;
-  --border-color: #6E5B38;
-  --text-primary: #FFFFFF;
-  --text-parchment: #1C140A;
-  --text-secondary: #F0E6D2;
-  --text-muted: #B8D8A0;
+  --card-surface: rgba(30, 26, 22, 0.96);
+  --card-border: #4CAF50;
+  --card-glow: rgba(76, 175, 80, 0.4);
+  --text-primary: #F5E6C8;
+  --text-secondary: #E8A33D;
+  --text-muted: #8C7A55;
   --accent-primary: #4CAF50;
-  --accent-secondary: #FFC107;
-  --accent-tertiary: #38B6FF;
-  --live-success: #6FD66F;
+  --accent-secondary: #38B6FF;
+  --accent-tertiary: #00A86B;
+  --card-radius: 2px;
 
   --font-heading: 'Fredoka', 'Baloo 2', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -45,20 +43,19 @@
 }
 
 [data-world="gta"] {
-  /* 🌆 LOS SANTOS — HIGH CONTRAST NEON */
+  /* 🌆 LOS SANTOS — LUXURY CARBON & NEON GLOW */
   --bg-base: #0C0A14;
   --bg-secondary: #161224;
-  --card-surface: rgba(22, 16, 34, 0.94);
-  --card-parchment: #F5EEFF;
-  --border-color: #FF007F;
-  --text-primary: #FFFFFF;
-  --text-parchment: #120C1F;
-  --text-secondary: #E8D5FF;
-  --text-muted: #C4B5FD;
+  --card-surface: rgba(24, 16, 38, 0.96);
+  --card-border: #FF007F;
+  --card-glow: rgba(255, 0, 127, 0.45);
+  --text-primary: #F5EEFF;
+  --text-secondary: #C9B8E8;
+  --text-muted: #8B7BAE;
   --accent-primary: #FF007F;
   --accent-secondary: #00F0FF;
-  --accent-tertiary: #FFA85C;
-  --live-success: #39FF88;
+  --accent-tertiary: #9900FF;
+  --card-radius: 10px;
 
   --font-heading: 'Bebas Neue', 'Oswald', sans-serif;
   --font-body: 'Manrope', 'Inter', sans-serif;
@@ -100,18 +97,10 @@ button {
   color: inherit;
 }
 
-/* Typography Utility Classes with Text-Shadow Protection */
-.font-heading { 
-  font-family: var(--font-heading);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-}
-.font-body { 
-  font-family: var(--font-body); 
-}
-.font-label { 
-  font-family: var(--font-label); 
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-}
+/* Typography Utility Classes */
+.font-heading { font-family: var(--font-heading); text-shadow: 0 2px 6px rgba(0,0,0,0.6); }
+.font-body { font-family: var(--font-body); }
+.font-label { font-family: var(--font-label); }
 
 /* World Background Wallpaper */
 .world-bg-wallpaper {
@@ -125,25 +114,78 @@ button {
   pointer-events: none;
 }
 
-/* BALANCED BLACK OVERLAY (65% - 80% OPACITY) FOR PERFECT TEXT READABILITY */
 .world-overlay {
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   transition: background 600ms ease-in-out;
-  background: linear-gradient(to bottom, rgba(14, 12, 10, 0.68) 0%, rgba(14, 12, 10, 0.85) 100%);
+  background: linear-gradient(to bottom, rgba(14, 12, 10, 0.7) 0%, rgba(14, 12, 10, 0.88) 100%);
 }
 
 [data-world="minecraft"] .world-overlay {
-  background: linear-gradient(to bottom, rgba(20, 28, 16, 0.68) 0%, rgba(20, 28, 16, 0.85) 100%);
+  background: linear-gradient(to bottom, rgba(20, 28, 16, 0.7) 0%, rgba(20, 28, 16, 0.88) 100%);
 }
 
 [data-world="gta"] .world-overlay {
-  background: linear-gradient(to bottom, rgba(12, 10, 20, 0.68) 0%, rgba(12, 10, 20, 0.85) 100%);
+  background: linear-gradient(to bottom, rgba(12, 10, 20, 0.7) 0%, rgba(12, 10, 20, 0.88) 100%);
 }
 
-/* Buttons */
+/* =========================================================
+   DYNAMIC THEME CARD SYSTEM (SMOOTH 400ms BLEND TRANSITION)
+   ========================================================= */
+.theme-card {
+  background: var(--card-surface);
+  border: 2px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 15px var(--card-glow);
+  position: relative;
+  transition: background 400ms ease, border-color 400ms ease, box-shadow 400ms ease, border-radius 400ms ease, transform 300ms ease;
+  backdrop-filter: blur(8px);
+}
+
+/* THEME SPECIFIC CARD OVERRIDES */
+
+/* Minecraft Cards: Deepslate Texture & Pixel Bevels */
+[data-world="minecraft"] .theme-card {
+  background: radial-gradient(circle, #25282A 0%, #15181A 100%);
+  border-color: #4CAF50;
+  border-radius: 2px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.1), 0 8px 25px rgba(0,0,0,0.8), 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+[data-world="minecraft"] .theme-card:hover {
+  border-color: #38B6FF;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 12px 35px rgba(0,0,0,0.9), 0 0 25px rgba(56, 182, 255, 0.5);
+}
+
+/* GTA V Cards: Carbon Fiber & Neon Glow */
+[data-world="gta"] .theme-card {
+  background: linear-gradient(135deg, rgba(26,18,42,0.96) 0%, rgba(14,10,26,0.98) 100%);
+  border-color: rgba(255, 0, 127, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 127, 0.35);
+}
+
+[data-world="gta"] .theme-card:hover {
+  border-color: #00F0FF;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 240, 255, 0.5);
+}
+
+/* Tsushima Cards: Parchment Paper & Ink Stamp */
+[data-world="tsushima"] .theme-card {
+  background: linear-gradient(180deg, rgba(38,26,20,0.96) 0%, rgba(22,14,10,0.98) 100%);
+  border-color: #8A6D3D;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 15px rgba(201, 162, 39, 0.25);
+}
+
+[data-world="tsushima"] .theme-card:hover {
+  border-color: #B23A2E;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(178, 58, 46, 0.4);
+}
+
+/* Dynamic Buttons */
 .btn-wood {
   display: inline-flex;
   align-items: center;
@@ -156,11 +198,11 @@ button {
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--card-border);
+  border-radius: var(--card-radius);
   box-shadow: 0 4px 14px rgba(0,0,0,0.6);
-  border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.15s ease, filter 0.2s ease;
+  transition: all 300ms ease;
 }
 
 .btn-wood:hover {
@@ -174,20 +216,19 @@ button {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.8rem 1.8rem;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 600;
-  border: 2px solid var(--border-color);
-  border-radius: 4px;
+  border: 2px solid var(--card-border);
+  border-radius: var(--card-radius);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 300ms ease;
 }
 
 .btn-kraft:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   border-color: var(--accent-secondary);
   transform: translateY(-2px);
 }
@@ -197,20 +238,21 @@ button {
   width: 54px;
   height: 54px;
   background: rgba(0, 0, 0, 0.7);
-  border: 2px solid var(--border-color);
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+  border: 2px solid var(--card-border);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 0 0 10px var(--card-glow);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  border-radius: 4px;
+  border-radius: var(--card-radius);
+  transition: all 400ms ease;
 }
 
 /* XP Bar */
 .xp-bar-container {
   height: 12px;
   background: rgba(0, 0, 0, 0.8);
-  border: 1.5px solid var(--border-color);
+  border: 1.5px solid var(--card-border);
   border-radius: 3px;
   overflow: hidden;
   position: relative;
@@ -227,14 +269,15 @@ button {
   font-size: 0.75rem;
   font-weight: bold;
   padding: 4px 10px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   color: var(--text-primary);
-  border: 1.5px solid var(--border-color);
+  border: 1.5px solid var(--card-border);
   box-shadow: 0 2px 6px rgba(0,0,0,0.6);
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  border-radius: 3px;
+  border-radius: var(--card-radius);
+  transition: all 400ms ease;
 }
 
 .pixel-badge.emerald {
@@ -255,7 +298,7 @@ button {
   border-color: #00F0FF;
 }
 
-/* Custom Handcrafted Torn Paper Navigation Banner (BRIGHT HIGH CONTRAST) */
+/* Handcrafted Torn Paper Nav */
 .torn-paper-nav {
   position: relative;
   background: #FAF3E0;
@@ -271,32 +314,6 @@ button {
   color: #1A140E !important;
 }
 
-/* Red Ribbon Bookmark */
-.ribbon-bookmark {
-  position: absolute;
-  top: -4px;
-  right: 24px;
-  width: 24px;
-  height: 42px;
-  background: linear-gradient(180deg, #D32F2F 0%, #B71C1C 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-  z-index: 60;
-  pointer-events: none;
-}
-
-.ribbon-pin {
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 8px;
-  height: 8px;
-  background: #FFD700;
-  border: 1.5px solid #5D0000;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-}
-
 /* 9-Slot Minecraft Bottom Hotbar */
 .mc-hotbar {
   position: fixed;
@@ -307,7 +324,7 @@ button {
   display: flex;
   gap: 6px;
   background: rgba(20, 14, 8, 0.96);
-  border: 3px solid #6E5B38;
+  border: 3px solid #5C4B2A;
   padding: 6px;
   border-radius: 8px;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
@@ -351,36 +368,6 @@ button {
   padding: 10px;
 }
 
-/* Wanted Star Rating Component */
-.wanted-star {
-  color: #FFC107;
-  font-size: 1.2rem;
-  filter: drop-shadow(0 0 4px rgba(255, 193, 7, 0.8));
-}
-
-.wanted-star.active {
-  color: #FF007F;
-  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.9));
-}
-
-/* Minecraft Achievement Unlocked Toast */
-.mc-achievement-toast {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  z-index: 120;
-  background: rgba(20, 14, 8, 0.96);
-  border: 2px solid #FFC107;
-  border-radius: 6px;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
-  font-family: 'VT323', monospace;
-  color: #FFFFFF;
-}
-
 /* Particle Keyframes */
 @keyframes leafFall {
   0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
@@ -414,6 +401,6 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: var(--card-border);
   border-radius: 3px;
 }

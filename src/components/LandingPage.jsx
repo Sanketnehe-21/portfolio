@@ -4,6 +4,9 @@ import { WorldProvider, useWorld, WORLDS } from '../context/WorldContext';
 import WorldParticles from './WorldParticles';
 import WorldSwitcher from './WorldSwitcher';
 import WorldSplashOverlay from './WorldSplashOverlay';
+import CustomCursor from './CustomCursor';
+import WorldInteractionsLayer from './WorldInteractionsLayer';
+import TsushimaAtmospheric3D from './TsushimaAtmospheric3D';
 import MinecraftHotbar from './MinecraftHotbar';
 import GtaGpsWidget from './GtaGpsWidget';
 import MinecraftAchievementToast from './MinecraftAchievementToast';
@@ -59,6 +62,15 @@ function PortfolioMain() {
 
   return (
     <div className="w-full min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] font-body relative selection:bg-[var(--accent-primary)] selection:text-white overflow-x-hidden">
+      {/* CUSTOM WORLD GAME MOUSE CURSOR */}
+      <CustomCursor />
+
+      {/* GAME WORLD INTERACTIVE MECHANICS LAYER */}
+      <WorldInteractionsLayer />
+
+      {/* TSUSHIMA 3D ATMOSPHERIC FOG & LEAVES */}
+      <TsushimaAtmospheric3D />
+
       {/* FULL SCREEN CINEMATIC GAME THEME SPLASH OVERLAY */}
       <WorldSplashOverlay />
 
@@ -92,7 +104,7 @@ function PortfolioMain() {
       {/* -------------------------------------------------- */}
       <header className="fixed top-3 left-0 right-0 z-50 px-4 md:px-8 w-full flex items-center justify-between pointer-events-none">
         {/* Left Brand Badge */}
-        <div className="pointer-events-auto flex items-center gap-2 bg-[var(--card-surface)]/90 backdrop-blur-md border-2 border-[var(--border-color)] px-3.5 py-1.5 rounded-full shadow-lg">
+        <div className="pointer-events-auto flex items-center gap-2 bg-[var(--card-surface)]/90 backdrop-blur-md border-2 border-[var(--card-border)] px-3.5 py-1.5 rounded-full shadow-lg">
           <div className="w-7 h-7 rounded-full bg-[var(--accent-primary)] text-white font-label font-bold flex items-center justify-center text-xs">
             {activeWorldConfig.symbol}
           </div>
@@ -161,7 +173,7 @@ function PortfolioMain() {
 
             {/* Tsushima Haiku Banner */}
             {isTsushima && (
-              <div className="p-3 bg-[var(--card-surface)] border border-[var(--border-color)] rounded italic text-xs text-[var(--text-secondary)] font-heading">
+              <div className="p-3 bg-[var(--card-surface)] border border-[var(--card-border)] rounded italic text-xs text-[var(--text-secondary)] font-heading">
                 "Wind through red maples, / Code crafted with silent strength, / Build for eternity."
               </div>
             )}
@@ -181,7 +193,7 @@ function PortfolioMain() {
             </div>
 
             {/* Stats Row */}
-            <div className="pt-8 border-t-2 border-dashed border-[var(--border-color)] grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-2xl">
+            <div className="pt-8 border-t-2 border-dashed border-[var(--card-border)] grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-2xl">
               {[
                 { value: '10+', label: 'Projects Built' },
                 { value: '5+', label: 'Live Apps' },
@@ -215,10 +227,10 @@ function PortfolioMain() {
       {/* -------------------------------------------------- */}
       {/* 1. ABOUT SECTION                                   */}
       {/* -------------------------------------------------- */}
-      <section className="w-full py-24 px-6 md:px-12 lg:px-20 relative z-20 bg-[var(--bg-secondary)]/40 backdrop-blur-xs border-t-2 border-[var(--border-color)]" id="about">
+      <section className="w-full py-24 px-6 md:px-12 lg:px-20 relative z-20 bg-[var(--bg-secondary)]/40 backdrop-blur-xs border-t-2 border-[var(--card-border)]" id="about">
         <div className="w-full">
           <div className="mb-14 text-center max-w-2xl mx-auto">
-            <div className="font-label text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-2 flex items-center justify-center gap-2">
+            <div className="font-label text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-2 flex items-center justify-center gap-2 font-bold">
               <span>📓</span> ABOUT THE BUILDER
             </div>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[var(--text-primary)]">
