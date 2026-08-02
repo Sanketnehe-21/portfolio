@@ -1,43 +1,42 @@
 /* =========================================================
-   MULTI-WORLD GAMING PORTFOLIO v2 — FULL THEME SYSTEMS
-   Self-Contained Color Tokens & World Custom Properties
+   MULTI-WORLD GAMING PORTFOLIO v2 — HIGH CONTRAST & VISIBILITY
    ========================================================= */
 
 :root, [data-world="tsushima"] {
-  /* 🍁 TSUSHIMA — DUSK MAPLE */
-  --bg-base: #1A1210;
-  --bg-secondary: #251A16;
-  --card-surface: #2E2018;
-  --card-parchment: #E8DCC0;
-  --border-color: #8A6D3D;
-  --text-primary: #EDE3D0;
-  --text-parchment: #2A1F16;
-  --text-secondary: #B99B6B;
-  --text-muted: #7E6B52;
-  --accent-primary: #B23A2E;
-  --accent-secondary: #C9A227;
-  --accent-tertiary: #4A5A4E;
-  --live-success: #C9A227;
+  /* 🍁 TSUSHIMA — HIGH CONTRAST DUSK MAPLE */
+  --bg-base: #0E0C0A;
+  --bg-secondary: #1C1814;
+  --card-surface: rgba(28, 22, 18, 0.92);
+  --card-parchment: #F7EEDC;
+  --border-color: #D4AF37;
+  --text-primary: #FFFFFF;
+  --text-parchment: #1A140E;
+  --text-secondary: #F3E5C8;
+  --text-muted: #D4C3A3;
+  --accent-primary: #FF3B30;
+  --accent-secondary: #FFD700;
+  --accent-tertiary: #52B788;
+  --live-success: #FFD700;
 
-  --font-heading: 'Cormorant Garamond', serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Lora', 'Noto Serif', serif;
   --font-label: 'Cormorant Garamond', serif;
 }
 
 [data-world="minecraft"] {
-  /* 🟩 MINECRAFT — GOLDEN HOUR */
-  --bg-base: #1E2A17;
-  --bg-secondary: #2F3D22;
-  --card-surface: #3B2A1A;
-  --card-parchment: #3B2A1A;
-  --border-color: #5C4B2A;
-  --text-primary: #F5E6C8;
-  --text-parchment: #F5E6C8;
-  --text-secondary: #C9B584;
-  --text-muted: #8C7A55;
-  --accent-primary: #5FBF4A;
-  --accent-secondary: #E8A33D;
-  --accent-tertiary: #4AA8D8;
+  /* 🟩 MINECRAFT — HIGH CONTRAST GOLDEN HOUR */
+  --bg-base: #141C10;
+  --bg-secondary: #1E2B18;
+  --card-surface: rgba(35, 25, 15, 0.92);
+  --card-parchment: #F5E6C8;
+  --border-color: #6E5B38;
+  --text-primary: #FFFFFF;
+  --text-parchment: #1C140A;
+  --text-secondary: #F0E6D2;
+  --text-muted: #B8D8A0;
+  --accent-primary: #4CAF50;
+  --accent-secondary: #FFC107;
+  --accent-tertiary: #38B6FF;
   --live-success: #6FD66F;
 
   --font-heading: 'Fredoka', 'Baloo 2', sans-serif;
@@ -46,18 +45,18 @@
 }
 
 [data-world="gta"] {
-  /* 🌆 LOS SANTOS — SUNSET NEON */
-  --bg-base: #1B1330;
-  --bg-secondary: #2A1B45;
-  --card-surface: #241638;
-  --card-parchment: #241638;
-  --border-color: rgba(255, 110, 199, 0.35);
-  --text-primary: #F5EEFF;
-  --text-parchment: #F5EEFF;
-  --text-secondary: #C9B8E8;
-  --text-muted: #8B7BAE;
-  --accent-primary: #FF6EC7;
-  --accent-secondary: #4DD9E8;
+  /* 🌆 LOS SANTOS — HIGH CONTRAST NEON */
+  --bg-base: #0C0A14;
+  --bg-secondary: #161224;
+  --card-surface: rgba(28, 20, 42, 0.92);
+  --card-parchment: #F5EEFF;
+  --border-color: #FF007F;
+  --text-primary: #FFFFFF;
+  --text-parchment: #120C1F;
+  --text-secondary: #E8D5FF;
+  --text-muted: #C4B5FD;
+  --accent-primary: #FF007F;
+  --accent-secondary: #00F0FF;
   --accent-tertiary: #FFA85C;
   --live-success: #39FF88;
 
@@ -85,7 +84,7 @@ body {
   line-height: 1.65;
   overflow-x: hidden;
   min-height: 100vh;
-  transition: background-color 500ms ease, color 500ms ease;
+  transition: background-color 400ms ease, color 400ms ease;
 }
 
 a {
@@ -114,25 +113,26 @@ button {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: opacity 800ms ease-in-out;
+  transition: opacity 600ms ease-in-out;
   pointer-events: none;
 }
 
+/* LIGHTER VIBRANT OVERLAY SO WALLPAPER AND TEXT ARE FULLY VISIBLE */
 .world-overlay {
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  transition: background 800ms ease-in-out;
-  background: linear-gradient(to bottom, rgba(26, 18, 16, 0.75) 0%, rgba(26, 18, 16, 0.94) 100%);
+  transition: background 600ms ease-in-out;
+  background: radial-gradient(circle at center, rgba(14, 12, 10, 0.3) 0%, rgba(14, 12, 10, 0.65) 100%);
 }
 
 [data-world="minecraft"] .world-overlay {
-  background: linear-gradient(to bottom, rgba(30, 42, 23, 0.78) 0%, rgba(30, 42, 23, 0.95) 100%);
+  background: radial-gradient(circle at center, rgba(20, 28, 16, 0.3) 0%, rgba(20, 28, 16, 0.65) 100%);
 }
 
 [data-world="gta"] .world-overlay {
-  background: linear-gradient(to bottom, rgba(27, 19, 48, 0.78) 0%, rgba(27, 19, 48, 0.96) 100%);
+  background: radial-gradient(circle at center, rgba(12, 10, 20, 0.3) 0%, rgba(12, 10, 20, 0.65) 100%);
 }
 
 /* Buttons */
@@ -141,22 +141,22 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.75rem 1.6rem;
+  padding: 0.8rem 1.8rem;
   background: var(--accent-primary);
   color: #FFFFFF;
   font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   border: 2px solid var(--border-color);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.15s ease, filter 0.2s ease;
 }
 
 .btn-wood:hover {
-  filter: brightness(1.15);
+  filter: brightness(1.2);
   transform: translateY(-2px);
 }
 
@@ -165,11 +165,12 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.75rem 1.6rem;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
+  padding: 0.8rem 1.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
   font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   border: 2px solid var(--border-color);
   border-radius: 4px;
@@ -178,46 +179,152 @@ button {
 }
 
 .btn-kraft:hover {
+  background: rgba(255, 255, 255, 0.2);
   border-color: var(--accent-secondary);
   transform: translateY(-2px);
+}
+
+/* Inventory Grid Slot */
+.inventory-slot {
+  width: 54px;
+  height: 54px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--border-color);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 4px;
+}
+
+/* XP Bar */
+.xp-bar-container {
+  height: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1.5px solid var(--border-color);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+}
+
+/* Pixel Badge */
+.pixel-badge {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 3px;
+}
+
+.pixel-badge.emerald {
+  background: rgba(76, 175, 80, 0.25);
+  color: #6FD66F;
+  border-color: #4CAF50;
+}
+
+.pixel-badge.gold {
+  background: rgba(255, 215, 0, 0.25);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+
+.pixel-badge.diamond {
+  background: rgba(0, 240, 255, 0.25);
+  color: #00F0FF;
+  border-color: #00F0FF;
+}
+
+/* Custom Handcrafted Torn Paper Navigation Banner (BRIGHT HIGH CONTRAST) */
+.torn-paper-nav {
+  position: relative;
+  background: #FAF3E0;
+  color: #1A140E;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  clip-path: polygon(
+    0% 0%, 2% 2px, 4% 0px, 7% 3px, 10% 0px, 14% 2px, 18% 0px, 22% 3px, 26% 0px, 30% 2px, 34% 0px, 38% 3px, 42% 0px, 46% 3px, 50% 0px, 54% 2px, 58% 0px, 62% 3px, 66% 0px, 70% 2px, 74% 0px, 78% 3px, 82% 0px, 86% 3px, 90% 0px, 94% 2px, 97% 0px, 100% 0%,
+    100% 100%, 98% 97%, 95% 99%, 91% 96%, 87% 99%, 83% 97%, 79% 100%, 75% 96%, 71% 99%, 67% 97%, 63% 99%, 59% 96%, 55% 99%, 51% 97%, 47% 99%, 43% 96%, 39% 99%, 35% 97%, 31% 99%, 27% 96%, 23% 99%, 19% 97%, 15% 99%, 11% 96%, 7% 99%, 3% 97%, 0% 100%
+  );
+}
+
+.torn-paper-nav button {
+  color: #1A140E !important;
+}
+
+/* Red Ribbon Bookmark */
+.ribbon-bookmark {
+  position: absolute;
+  top: -4px;
+  right: 24px;
+  width: 24px;
+  height: 42px;
+  background: linear-gradient(180deg, #D32F2F 0%, #B71C1C 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  z-index: 60;
+  pointer-events: none;
+}
+
+.ribbon-pin {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: #FFD700;
+  border: 1.5px solid #5D0000;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 /* 9-Slot Minecraft Bottom Hotbar */
 .mc-hotbar {
   position: fixed;
-  bottom: 16px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   display: flex;
-  gap: 4px;
-  background: #3B2A1A;
-  border: 3px solid #5C4B2A;
-  padding: 4px;
-  border-radius: 6px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255,255,255,0.15);
+  gap: 6px;
+  background: rgba(30, 20, 10, 0.95);
+  border: 3px solid #6E5B38;
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
 }
 
 .mc-slot {
-  width: 46px;
-  height: 46px;
-  background: #2D1F13;
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.6);
   border: 2px solid #5C4B2A;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  border-radius: 3px;
+  font-size: 1.3rem;
+  border-radius: 4px;
   cursor: pointer;
   transition: transform 0.15s ease, border-color 0.15s ease;
   position: relative;
 }
 
 .mc-slot.active {
-  border-color: #5FBF4A;
-  background: #463421;
-  box-shadow: inset 0 0 8px rgba(95, 191, 74, 0.5);
-  transform: scale(1.08);
+  border-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.3);
+  box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.6);
+  transform: scale(1.1);
 }
 
 /* GTA Minimap GPS Tracker Widget */
@@ -225,27 +332,27 @@ button {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  width: 110px;
-  height: 110px;
-  background: #1C1929;
-  border: 2px solid #FF6EC7;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 110, 199, 0.4);
+  width: 120px;
+  height: 120px;
+  background: rgba(18, 14, 28, 0.95);
+  border: 2px solid #FF007F;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
   z-index: 90;
   overflow: hidden;
-  padding: 8px;
+  padding: 10px;
 }
 
 /* Wanted Star Rating Component */
 .wanted-star {
-  color: #FFA85C;
-  font-size: 1.1rem;
-  filter: drop-shadow(0 0 4px rgba(255, 168, 92, 0.6));
+  color: #FFC107;
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 4px rgba(255, 193, 7, 0.8));
 }
 
 .wanted-star.active {
-  color: #FF6EC7;
-  filter: drop-shadow(0 0 6px rgba(255, 110, 199, 0.8));
+  color: #FF007F;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.9));
 }
 
 /* Minecraft Achievement Unlocked Toast */
@@ -254,25 +361,39 @@ button {
   top: 80px;
   right: 20px;
   z-index: 120;
-  background: #241A12;
-  border: 2px solid #5C4B2A;
-  border-radius: 4px;
-  padding: 8px 14px;
+  background: rgba(25, 18, 12, 0.95);
+  border: 2px solid #FFC107;
+  border-radius: 6px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
   font-family: 'VT323', monospace;
-  color: #F5E6C8;
+  color: #FFFFFF;
 }
 
-/* Tsushima Parchment Unfurl Card */
-.tsushima-parchment-card {
-  background: #E8DCC0;
-  color: #2A1F16;
-  border: 1.5px solid #8A6D3D;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+/* Particle Keyframes */
+@keyframes leafFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  100% { transform: translateY(105vh) rotate(360deg); opacity: 0.1; }
 }
+
+@keyframes pixelFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-40px) scale(1.1); opacity: 0.3; }
+  100% { transform: translateY(0) scale(1); opacity: 0.7; }
+}
+
+@keyframes bokehDrift {
+  0% { transform: translateY(0) scale(0.9); opacity: 0.5; }
+  50% { transform: translateY(-60px) scale(1.2); opacity: 0.8; }
+  100% { transform: translateY(0) scale(0.9); opacity: 0.5; }
+}
+
+.animate-leafFall { animation: leafFall linear infinite; }
+.animate-pixelFloat { animation: pixelFloat linear infinite; }
+.animate-bokehDrift { animation: bokehDrift ease-in-out infinite; }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
