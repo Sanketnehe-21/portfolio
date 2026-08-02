@@ -1,0 +1,734 @@
+/* Landing Sequence Styles — Black / Gold System */
+
+.landing-wrapper {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  overflow: hidden;
+  font-family: var(--font-body);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* CRT Scanlines Overlay */
+.crt-scanlines {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.2) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Particle Canvas */
+.particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Viewport Shake Container */
+.viewport-shake {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.viewport-shake.shaking {
+  animation: cameraJolt 0.15s ease-in-out infinite;
+}
+
+@keyframes cameraJolt {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-3px, 2px) rotate(-0.3deg); }
+  50% { transform: translate(3px, -2px) rotate(0.3deg); }
+  75% { transform: translate(-2px, -1px) rotate(-0.1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Ambient Radial Glow */
+.ambient-radial-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(156, 122, 38, 0.04) 50%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
+}
+
+/* STAGE 1: BOOT SCREEN TERMINAL */
+.boot-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.ghost-phone-silhouette {
+  position: absolute;
+  width: 320px;
+  height: 640px;
+  border-radius: 48px;
+  border: 1px dashed var(--border-hairline-strong);
+  box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.03);
+  pointer-events: none;
+}
+
+.terminal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 30;
+  padding: 2rem;
+}
+
+.terminal-log {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--accent-gold-bright);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  min-height: 2.5rem;
+}
+
+.log-prompt {
+  color: var(--accent-gold);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  color: var(--accent-gold);
+  animation: blink 0.8s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.boot-subtext {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.launch-cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 2.5rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cta-text);
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.launch-cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+  filter: brightness(1.12);
+}
+
+.cta-pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--accent-gold-bright);
+  animation: ctaPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes ctaPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* STAGE 2: BOTTOM-LEFT ROCKET IGNITION FLARE */
+.launch-ignition-burst {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.amber-ignition-flare {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #FFF4D6 0%, #F0CF6C 40%, rgba(212, 175, 55, 0) 70%);
+  filter: blur(20px);
+  animation: amberFlare 0.8s ease-out forwards;
+}
+
+@keyframes amberFlare {
+  0% { opacity: 1; transform: scale(0.5); }
+  100% { opacity: 0; transform: scale(1.8); }
+}
+
+.ring-shockwave-left {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-gold);
+  transform: translate(-50%, 50%);
+  animation: shockwaveLeft 0.9s ease-out forwards;
+}
+
+@keyframes shockwaveLeft {
+  0% { width: 10px; height: 10px; opacity: 1; border-width: 8px; }
+  100% { width: 800px; height: 800px; opacity: 0; border-width: 1px; }
+}
+
+/* STAGE 3 & 4: REAL DEVICE MOCKUP & iOS HOME SCREEN */
+.device-container {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+}
+
+.iphone-frame {
+  position: relative;
+  width: 385px;
+  height: 800px;
+  background: var(--bg-base);
+  border-radius: 50px;
+  border: 12px solid #161412;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(212, 175, 55, 0.15),
+    inset 0 0 0 2px rgba(212, 175, 55, 0.25);
+  overflow: hidden; /* STRICT CORNER CLIPPING */
+  display: flex;
+  flex-direction: column;
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 28px;
+  background: #000000;
+  border-radius: 20px;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.camera-lens {
+  width: 10px;
+  height: 10px;
+  background: #141210;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.sensor-dot {
+  width: 6px;
+  height: 6px;
+  background: #1c1916;
+  border-radius: 50%;
+}
+
+/* iPhone Status Bar */
+.iphone-status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  padding: 12px 24px 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  pointer-events: none;
+}
+
+.status-icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.65rem;
+}
+
+/* In-App Theme Toggle Switcher Pill */
+.in-app-theme-toggle {
+  position: absolute;
+  top: 48px;
+  right: 16px;
+  width: 52px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-hairline-strong);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 5px;
+  z-index: 105;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.theme-toggle-icon {
+  font-size: 0.65rem;
+  z-index: 2;
+  user-select: none;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+  z-index: 1;
+}
+
+/* =========================================================
+   iOS HOME SCREEN (WIDGET + APP GRID + DOCK)
+   ========================================================= */
+
+.ios-home-screen {
+  position: absolute;
+  inset: 0;
+  padding: 85px 20px 90px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, var(--bg-base) 75%);
+  transition: background 300ms ease;
+}
+
+/* Profile Widget */
+.profile-widget {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline-strong);
+  border-radius: 22px;
+  box-shadow: var(--shadow-glow);
+}
+
+.widget-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-surface-raised);
+  border: 1.5px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.widget-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.widget-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.widget-tagline {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* App Icon Grid (4 Columns) */
+.app-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 12px;
+  justify-items: center;
+}
+
+.app-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.app-icon-box {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px; /* iOS Superellipse */
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-hairline-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gold-glow-1 { background: linear-gradient(135deg, #1c1916 0%, rgba(212, 175, 55, 0.25) 100%); }
+.gold-glow-2 { background: linear-gradient(135deg, #1c1916 0%, rgba(156, 122, 38, 0.3) 100%); }
+.gold-glow-3 { background: linear-gradient(135deg, #1c1916 0%, rgba(240, 207, 108, 0.25) 100%); }
+.gold-glow-4 { background: linear-gradient(135deg, #1c1916 0%, rgba(212, 175, 55, 0.35) 100%); }
+.gold-glow-5 { background: linear-gradient(135deg, #1c1916 0%, rgba(184, 134, 11, 0.3) 100%); }
+.gold-glow-6 { background: linear-gradient(135deg, #1c1916 0%, rgba(212, 175, 55, 0.2) 100%); }
+
+.app-glyph {
+  font-size: 1.5rem;
+}
+
+.app-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.app-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  color: var(--cta-text);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* iOS Bottom Dock Bar */
+.ios-dock-bar {
+  margin-top: auto;
+  height: 68px;
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-hairline-strong);
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 12px;
+  box-shadow: var(--shadow-glow);
+}
+
+.dock-icon-item {
+  cursor: pointer;
+}
+
+.dock-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* =========================================================
+   OPEN APP SCREEN (EXPAND FROM ICON GENIE TRANSITION)
+   ========================================================= */
+
+.ios-app-viewport {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-base);
+  display: flex;
+  flex-direction: column;
+  z-index: 95;
+  overflow: hidden;
+}
+
+.app-nav-header {
+  height: 52px;
+  padding: 38px 16px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-hairline);
+  z-index: 100;
+}
+
+.back-chevron-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  cursor: pointer;
+}
+
+.chevron-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.app-header-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.app-body-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem 0 60px 0;
+  scroll-behavior: smooth;
+}
+
+/* iOS Scrollbar */
+.app-body-content::-webkit-scrollbar {
+  width: 4px;
+}
+.app-body-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.app-body-content::-webkit-scrollbar-thumb {
+  background: var(--accent-gold);
+  border-radius: 2px;
+}
+
+/* =========================================================
+   NATIVE RESUME DOCUMENT VIEWER APP STYLES
+   ========================================================= */
+
+.resume-document-viewer {
+  padding: 1rem 1.2rem 3rem 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.resume-paper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline-strong);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.25rem;
+  box-shadow: var(--shadow-glow);
+  width: 100%;
+  max-width: 340px;
+}
+
+.resume-header {
+  border-bottom: 2px solid var(--border-hairline-strong);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.resume-name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.resume-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.resume-contact-meta {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.resume-section {
+  margin-bottom: 1.25rem;
+}
+
+.resume-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 0.2rem;
+}
+
+.resume-item {
+  margin-bottom: 0.75rem;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.82rem;
+}
+
+.item-title {
+  color: var(--text-primary);
+}
+
+.item-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+}
+
+.item-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.1rem;
+}
+
+.item-meta {
+  font-size: 0.72rem;
+  color: var(--accent-gold);
+  margin-top: 0.2rem;
+}
+
+.item-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
+.resume-skills-list {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.resume-bullet-list {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Home Indicator & Glare */
+.interactive-home-bar {
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.interactive-home-bar:hover {
+  transform: translateX(-50%) scaleX(1.1);
+  background: var(--accent-gold);
+}
+
+.screen-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 95;
+}
+
+.replay-boot-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline-strong);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.replay-boot-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+@media (max-width: 480px) {
+  .iphone-frame {
+    width: 320px;
+    height: 680px;
+    border-width: 8px;
+    border-radius: 36px;
+  }
+}

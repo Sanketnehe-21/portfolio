@@ -1,0 +1,1204 @@
+/* ----------------------------------------------------- */
+/* 1. Root & Particles                                   */
+/* ----------------------------------------------------- */
+.landing-page-root {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.particle-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle-dot {
+  position: absolute;
+  background-color: var(--accent-gold);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: particleDrift 20s infinite linear;
+}
+
+/* ----------------------------------------------------- */
+/* 2. Boot Sequence                                      */
+/* ----------------------------------------------------- */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  flex-direction: column;
+}
+
+.boot-terminal {
+  font-family: var(--font-mono);
+  color: var(--accent-gold);
+  font-size: var(--fs-base);
+  width: 80%;
+  max-width: 600px;
+}
+
+.boot-line {
+  margin-bottom: var(--space-xs);
+  opacity: 0;
+  animation: fade-in 0.1s forwards;
+}
+
+.boot-line::after {
+  content: '_';
+  animation: terminalBlink 1s step-start infinite;
+}
+
+.boot-progress {
+  height: 2px;
+  background: var(--gradient-gold);
+  width: 0;
+  margin-top: var(--space-md);
+  box-shadow: var(--shadow-glow);
+  animation: progressFill 2s ease-out forwards;
+}
+
+.boot-cta {
+  margin-top: var(--space-lg);
+  padding: var(--space-sm) var(--space-xl);
+  background: var(--gradient-gold);
+  color: #000;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-glow);
+  opacity: 0;
+  animation: fade-in 0.5s 2s forwards;
+  transition: transform var(--ease-out-expo) 0.3s;
+}
+
+.boot-cta:hover {
+  transform: scale(1.05);
+}
+
+/* ----------------------------------------------------- */
+/* 3. Navigation                                         */
+/* ----------------------------------------------------- */
+.lp-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: rgba(10, 9, 8, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-xl);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+[data-theme="light"] .lp-nav {
+  background: rgba(250, 243, 228, 0.88);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.lp-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.lp-logo-mark {
+  width: 38px;
+  height: 38px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: var(--font-heading);
+  font-weight: bold;
+}
+
+.lp-logo-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--text-primary);
+  font-size: var(--fs-lg);
+}
+
+.lp-nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.lp-nav-link {
+  padding: var(--space-xs) var(--space-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: color var(--ease-smooth) 0.2s, background-color var(--ease-smooth) 0.2s;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.lp-nav-link:hover {
+  color: var(--accent-gold);
+  background-color: var(--bg-surface);
+}
+
+.lp-nav-theme-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--ease-out-expo) 0.3s;
+}
+
+.lp-nav-theme-btn:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* ----------------------------------------------------- */
+/* 4. Floating Platform Toggle                           */
+/* ----------------------------------------------------- */
+.lp-floating-toggle {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  background: rgba(10, 9, 8, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  gap: 4px;
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .lp-floating-toggle {
+  background: rgba(250, 243, 228, 0.7);
+}
+
+.lp-toggle-btn {
+  padding: var(--space-xs) var(--space-lg);
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: all var(--ease-out-expo) 0.3s;
+}
+
+.lp-toggle-btn.active {
+  background: var(--gradient-gold);
+  color: #000;
+  box-shadow: var(--shadow-glow);
+}
+
+/* ----------------------------------------------------- */
+/* 5. Hero Section                                       */
+/* ----------------------------------------------------- */
+.lp-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  padding-top: 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* ----------------------------------------------------- */
+/* 6. Hero Left Copy                                     */
+/* ----------------------------------------------------- */
+.lp-hero-copy {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.lp-eyebrow {
+  font-family: var(--font-mono);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.lp-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-gold);
+  border-radius: 50%;
+  animation: pulseDot 2s infinite;
+}
+
+.lp-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.lp-gold-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.lp-subtext {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  max-width: 440px;
+}
+
+.lp-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.lp-stats {
+  display: flex;
+  gap: 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding: var(--space-md) 0;
+  margin-top: var(--space-lg);
+}
+
+.lp-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lp-stat-val {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.lp-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lp-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+
+.tech-pill {
+  padding: 4px 12px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+}
+
+/* ----------------------------------------------------- */
+/* 7. Device Column (Right)                              */
+/* ----------------------------------------------------- */
+.lp-device-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lp-device-wrap {
+  position: relative;
+  perspective: 1200px;
+  will-change: transform;
+  transform: perspective(1200px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+  transition: transform 0.1s ease-out;
+  z-index: 20;
+}
+
+.lp-device-glow {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 40px;
+  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+  filter: blur(10px);
+  z-index: 10;
+}
+
+/* ----------------------------------------------------- */
+/* 8. PHOTOREALISTIC iOS Phone Hardware                  */
+/* ----------------------------------------------------- */
+.ios-shell {
+  position: relative;
+  width: 340px;
+  height: 720px;
+  background: linear-gradient(160deg, 
+    #3a3530 0%, 
+    #2a2520 15%, 
+    #3a3530 30%, 
+    #252018 50%, 
+    #2a2520 70%, 
+    #3a3530 85%, 
+    #1a1510 100%);
+  border-radius: 52px;
+  border: none;
+  padding: 10px;
+  box-shadow: 
+    var(--shadow-phone),
+    inset 0 0 0 1px rgba(255,255,255,0.06),
+    inset 0 0 0 2px rgba(212,175,55,0.15),
+    inset 0 1px 0 0 rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+.ios-hw-btn {
+  position: absolute;
+  background: linear-gradient(to right, #4a4540, #2a2520);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2);
+}
+
+.act-btn { left: -13px; top: 108px; width: 5px; height: 30px; border-radius: 3px 0 0 3px; }
+.vol-up { left: -13px; top: 155px; width: 5px; height: 48px; border-radius: 3px 0 0 3px; }
+.vol-dn { left: -13px; top: 216px; width: 5px; height: 48px; border-radius: 3px 0 0 3px; }
+.pwr-btn { right: -13px; top: 162px; width: 5px; height: 68px; border-radius: 0 3px 3px 0; }
+.cam-ctrl { right: -12px; top: 500px; width: 4px; height: 42px; border-radius: 0 3px 3px 0; }
+
+.ios-speaker-slit {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 2px;
+  z-index: 150;
+}
+
+.ios-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 44px;
+  background: var(--bg-base);
+  overflow: hidden;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.3);
+}
+
+.ios-di {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 126px;
+  height: 37px;
+  background: #000;
+  border-radius: 22px;
+  z-index: 180;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 3px rgba(0,0,0,1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 12px;
+}
+
+.ios-di-cam {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-right: 20px;
+}
+
+.ios-di-sensor {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #222;
+}
+
+.ios-screen-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255, 0.03) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255,255,255, 0.015) 100%
+  );
+  border-radius: 44px;
+  pointer-events: none;
+  z-index: 200;
+  transform: translateX(calc(var(--glare-x, 0) * 0.3px)) translateY(calc(var(--glare-y, 0) * 0.3px));
+  transition: transform 0.3s ease-out;
+}
+
+.ios-home-bar {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--text-tertiary);
+  border-radius: 2px;
+  z-index: 190;
+}
+
+/* ----------------------------------------------------- */
+/* 9. iOS Home Screen Interior                           */
+/* ----------------------------------------------------- */
+.ios-status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  pointer-events: none;
+  z-index: 170;
+}
+
+.ios-home-screen {
+  position: absolute;
+  inset: 0;
+  padding: 78px 16px 80px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: radial-gradient(circle at 50% 0%, var(--bg-surface-raised) 0%, var(--bg-base) 100%);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ios-home-screen::-webkit-scrollbar { display: none; }
+
+.ios-profile-widget {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.ios-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-raised);
+  font-weight: bold;
+  color: var(--accent-gold);
+}
+
+.ios-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ios-name {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.ios-tagline {
+  font-size: 10px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ios-app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px 8px;
+}
+
+.ios-app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.ios-app-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform var(--ease-out-expo) 0.3s;
+}
+
+.ios-app-box:hover {
+  transform: scale(1.06);
+}
+
+.ios-app-box.g1 { background: linear-gradient(135deg, #2a2a2a, #1a1a1a); }
+.ios-app-box.g2 { background: linear-gradient(135deg, #332b1a, #1a150c); }
+.ios-app-box.g3 { background: linear-gradient(135deg, #1a2a3a, #0c151d); }
+.ios-app-box.g4 { background: linear-gradient(135deg, #3a1a1a, #1d0c0c); }
+.ios-app-box.g5 { background: linear-gradient(135deg, #1a3a2a, #0c1d15); }
+.ios-app-box.g6 { background: linear-gradient(135deg, #2a1a3a, #150c1d); }
+
+.ios-app-icon {
+  font-size: 1.45rem;
+}
+
+.ios-app-label {
+  font-size: 0.66rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.ios-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 17px;
+  height: 17px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: #000;
+  font-weight: bold;
+}
+
+.ios-widget-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ios-quick-stats {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-gold);
+}
+
+.ios-dock {
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 12px;
+}
+
+.ios-dock-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--bg-surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ios-app-view {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 130;
+  background: var(--bg-base);
+}
+
+.ios-app-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 84px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 16px 12px 16px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  z-index: 140;
+}
+
+.ios-back-btn {
+  color: var(--accent-gold);
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 14px;
+}
+
+.ios-app-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+}
+
+.ios-app-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 88px;
+  padding-bottom: 60px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) transparent;
+}
+.ios-app-body::-webkit-scrollbar { width: 4px; }
+.ios-app-body::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 4px; }
+
+.ios-app-body .section, .and-app-body .section { padding: 1rem 0.75rem; }
+.ios-app-body .section-title, .and-app-body .section-title { font-size: 1.5rem; }
+.ios-app-body .projects-grid, .and-app-body .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
+.ios-app-body .glass-card, .and-app-body .glass-card { padding: 1rem; }
+
+
+/* ----------------------------------------------------- */
+/* 10. Android Mockup                                    */
+/* ----------------------------------------------------- */
+.and-shell {
+  position: relative;
+  width: 330px;
+  height: 710px;
+  background: linear-gradient(160deg, #1e1e22 0%, #111114 100%);
+  border-radius: 36px;
+  padding: 8px;
+  box-shadow: 
+    var(--shadow-phone),
+    inset 0 0 0 1px rgba(255,255,255,0.05),
+    inset 0 0 0 2px rgba(212,175,55,0.1);
+  flex-shrink: 0;
+}
+
+.and-btn {
+  position: absolute;
+  background: linear-gradient(to right, #333, #111);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  right: -6px;
+  width: 4px;
+  border-radius: 0 2px 2px 0;
+}
+.and-btn.vol { top: 120px; height: 60px; }
+.and-btn.pwr { top: 220px; height: 35px; }
+
+.and-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 29px;
+  background: var(--bg-base);
+  overflow: hidden;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.9);
+}
+
+.and-punch-hole {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 180;
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3);
+}
+
+.and-home {
+  position: absolute;
+  inset: 0;
+  padding: 60px 16px 80px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg-base);
+  overflow-y: auto;
+}
+
+.and-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface);
+  padding: 16px;
+  border-radius: 20px;
+}
+.and-profile-card .ios-avatar {
+  border: 2px solid var(--accent-gold);
+}
+
+.and-badge {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--accent-gold);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.and-app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 10px;
+}
+
+.and-app-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.and-app-view {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-base);
+  z-index: 130;
+  transform: translateX(100%);
+  transition: transform var(--ease-out-expo) 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+.and-app-view.active {
+  transform: translateX(0);
+}
+
+.and-app-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.and-nav-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: var(--bg-surface);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 190;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+/* ----------------------------------------------------- */
+/* 11. Web Portfolio Mode                                */
+/* ----------------------------------------------------- */
+.web-portfolio {
+  position: relative;
+  min-height: 100vh;
+  z-index: 2;
+  background: var(--bg-base);
+}
+
+.web-subnav {
+  position: sticky;
+  top: 0;
+  background: rgba(10, 9, 8, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  z-index: 100;
+  padding: var(--space-sm) var(--space-xl);
+}
+
+[data-theme="light"] .web-subnav {
+  background: rgba(250, 243, 228, 0.8);
+}
+
+.web-subnav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.web-subnav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.web-subnav-link:hover {
+  color: var(--accent-gold);
+}
+
+.web-full-hero {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+.web-full-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.web-full-hero-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.web-full-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.web-full-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.web-code-snippet {
+  background: var(--bg-surface);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.web-sections-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+.web-section-block {
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  padding-top: var(--space-2xl);
+  scroll-margin-top: 70px;
+}
+
+/* ----------------------------------------------------- */
+/* 12. Resume App (inside devices)                       */
+/* ----------------------------------------------------- */
+.resume-scroll-view {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rv-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 16px;
+}
+
+.rv-name {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.rv-role {
+  font-size: 14px;
+  color: var(--accent-gold);
+  margin-top: 4px;
+}
+
+.rv-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+}
+
+.rv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rv-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rv-card {
+  background: var(--bg-surface);
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 2px solid var(--accent-gold);
+}
+
+.rv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.rv-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+.rv-company {
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.rv-gold {
+  color: var(--accent-gold);
+}
+
+.rv-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.rv-skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rv-skill-pill {
+  padding: 4px 10px;
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--accent-gold);
+  border-radius: 12px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+}
+
+/* ----------------------------------------------------- */
+/* 13. Responsive Breakpoints                            */
+/* ----------------------------------------------------- */
+@media (max-width: 1100px) {
+  .lp-hero {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .web-full-hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .lp-hero {
+    flex-direction: column;
+    padding-top: 120px;
+    gap: 4rem;
+  }
+  
+  .lp-hero-copy {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .lp-nav-links {
+    display: none;
+  }
+
+  .lp-device-wrap {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 640px) {
+  .lp-hero {
+    padding-top: 100px;
+  }
+  
+  .lp-heading {
+    font-size: 2.5rem;
+  }
+  
+  .lp-device-wrap {
+    transform: scale(0.8);
+  }
+
+  .lp-toggle-btn {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 12px;
+  }
+}
+
+/* ----------------------------------------------------- */
+/* 14. Animations                                        */
+/* ----------------------------------------------------- */
+@keyframes particleDrift {
+  0% { transform: translateY(0) translateX(0); opacity: 0.1; }
+  50% { transform: translateY(-100px) translateX(50px); opacity: 0.4; }
+  100% { transform: translateY(-200px) translateX(0); opacity: 0.1; }
+}
+
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+@keyframes terminalBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes progressFill {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
