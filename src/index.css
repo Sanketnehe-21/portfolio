@@ -1,17 +1,17 @@
 /* =========================================================
-   MULTI-WORLD GAMING PORTFOLIO v2 — HIGH CONTRAST & VISIBILITY
+   MULTI-WORLD GAMING PORTFOLIO v2 — BALANCED DARK OVERLAY FOR READABILITY
    ========================================================= */
 
 :root, [data-world="tsushima"] {
   /* 🍁 TSUSHIMA — HIGH CONTRAST DUSK MAPLE */
   --bg-base: #0E0C0A;
   --bg-secondary: #1C1814;
-  --card-surface: rgba(28, 22, 18, 0.92);
+  --card-surface: rgba(24, 18, 14, 0.94);
   --card-parchment: #F7EEDC;
   --border-color: #D4AF37;
   --text-primary: #FFFFFF;
   --text-parchment: #1A140E;
-  --text-secondary: #F3E5C8;
+  --text-secondary: #F5E5C8;
   --text-muted: #D4C3A3;
   --accent-primary: #FF3B30;
   --accent-secondary: #FFD700;
@@ -27,7 +27,7 @@
   /* 🟩 MINECRAFT — HIGH CONTRAST GOLDEN HOUR */
   --bg-base: #141C10;
   --bg-secondary: #1E2B18;
-  --card-surface: rgba(35, 25, 15, 0.92);
+  --card-surface: rgba(28, 20, 12, 0.94);
   --card-parchment: #F5E6C8;
   --border-color: #6E5B38;
   --text-primary: #FFFFFF;
@@ -48,7 +48,7 @@
   /* 🌆 LOS SANTOS — HIGH CONTRAST NEON */
   --bg-base: #0C0A14;
   --bg-secondary: #161224;
-  --card-surface: rgba(28, 20, 42, 0.92);
+  --card-surface: rgba(22, 16, 34, 0.94);
   --card-parchment: #F5EEFF;
   --border-color: #FF007F;
   --text-primary: #FFFFFF;
@@ -100,12 +100,20 @@ button {
   color: inherit;
 }
 
-/* Typography Utility Classes */
-.font-heading { font-family: var(--font-heading); }
-.font-body { font-family: var(--font-body); }
-.font-label { font-family: var(--font-label); }
+/* Typography Utility Classes with Text-Shadow Protection */
+.font-heading { 
+  font-family: var(--font-heading);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.font-body { 
+  font-family: var(--font-body); 
+}
+.font-label { 
+  font-family: var(--font-label); 
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+}
 
-/* World Background Crossfade */
+/* World Background Wallpaper */
 .world-bg-wallpaper {
   position: fixed;
   inset: 0;
@@ -117,22 +125,22 @@ button {
   pointer-events: none;
 }
 
-/* LIGHTER VIBRANT OVERLAY SO WALLPAPER AND TEXT ARE FULLY VISIBLE */
+/* BALANCED BLACK OVERLAY (65% - 80% OPACITY) FOR PERFECT TEXT READABILITY */
 .world-overlay {
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   transition: background 600ms ease-in-out;
-  background: radial-gradient(circle at center, rgba(14, 12, 10, 0.3) 0%, rgba(14, 12, 10, 0.65) 100%);
+  background: linear-gradient(to bottom, rgba(14, 12, 10, 0.68) 0%, rgba(14, 12, 10, 0.85) 100%);
 }
 
 [data-world="minecraft"] .world-overlay {
-  background: radial-gradient(circle at center, rgba(20, 28, 16, 0.3) 0%, rgba(20, 28, 16, 0.65) 100%);
+  background: linear-gradient(to bottom, rgba(20, 28, 16, 0.68) 0%, rgba(20, 28, 16, 0.85) 100%);
 }
 
 [data-world="gta"] .world-overlay {
-  background: radial-gradient(circle at center, rgba(12, 10, 20, 0.3) 0%, rgba(12, 10, 20, 0.65) 100%);
+  background: linear-gradient(to bottom, rgba(12, 10, 20, 0.68) 0%, rgba(12, 10, 20, 0.85) 100%);
 }
 
 /* Buttons */
@@ -149,7 +157,7 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   border: 2px solid var(--border-color);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.15s ease, filter 0.2s ease;
@@ -166,7 +174,7 @@ button {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.8rem 1.8rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   color: #FFFFFF;
   font-family: var(--font-heading);
@@ -179,7 +187,7 @@ button {
 }
 
 .btn-kraft:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.7);
   border-color: var(--accent-secondary);
   transform: translateY(-2px);
 }
@@ -188,9 +196,9 @@ button {
 .inventory-slot {
   width: 54px;
   height: 54px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   border: 2px solid var(--border-color);
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,7 +209,7 @@ button {
 /* XP Bar */
 .xp-bar-container {
   height: 12px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   border: 1.5px solid var(--border-color);
   border-radius: 3px;
   overflow: hidden;
@@ -219,10 +227,10 @@ button {
   font-size: 0.75rem;
   font-weight: bold;
   padding: 4px 10px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   color: var(--text-primary);
   border: 1.5px solid var(--border-color);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -230,19 +238,19 @@ button {
 }
 
 .pixel-badge.emerald {
-  background: rgba(76, 175, 80, 0.25);
+  background: rgba(76, 175, 80, 0.35);
   color: #6FD66F;
   border-color: #4CAF50;
 }
 
 .pixel-badge.gold {
-  background: rgba(255, 215, 0, 0.25);
+  background: rgba(255, 215, 0, 0.35);
   color: #FFD700;
   border-color: #FFD700;
 }
 
 .pixel-badge.diamond {
-  background: rgba(0, 240, 255, 0.25);
+  background: rgba(0, 240, 255, 0.35);
   color: #00F0FF;
   border-color: #00F0FF;
 }
@@ -252,7 +260,7 @@ button {
   position: relative;
   background: #FAF3E0;
   color: #1A140E;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   clip-path: polygon(
     0% 0%, 2% 2px, 4% 0px, 7% 3px, 10% 0px, 14% 2px, 18% 0px, 22% 3px, 26% 0px, 30% 2px, 34% 0px, 38% 3px, 42% 0px, 46% 3px, 50% 0px, 54% 2px, 58% 0px, 62% 3px, 66% 0px, 70% 2px, 74% 0px, 78% 3px, 82% 0px, 86% 3px, 90% 0px, 94% 2px, 97% 0px, 100% 0%,
     100% 100%, 98% 97%, 95% 99%, 91% 96%, 87% 99%, 83% 97%, 79% 100%, 75% 96%, 71% 99%, 67% 97%, 63% 99%, 59% 96%, 55% 99%, 51% 97%, 47% 99%, 43% 96%, 39% 99%, 35% 97%, 31% 99%, 27% 96%, 23% 99%, 19% 97%, 15% 99%, 11% 96%, 7% 99%, 3% 97%, 0% 100%
@@ -272,7 +280,7 @@ button {
   height: 42px;
   background: linear-gradient(180deg, #D32F2F 0%, #B71C1C 100%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   z-index: 60;
   pointer-events: none;
 }
@@ -298,17 +306,17 @@ button {
   z-index: 100;
   display: flex;
   gap: 6px;
-  background: rgba(30, 20, 10, 0.95);
+  background: rgba(20, 14, 8, 0.96);
   border: 3px solid #6E5B38;
   padding: 6px;
   border-radius: 8px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
 }
 
 .mc-slot {
   width: 48px;
   height: 48px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   border: 2px solid #5C4B2A;
   display: flex;
   align-items: center;
@@ -322,8 +330,8 @@ button {
 
 .mc-slot.active {
   border-color: #4CAF50;
-  background: rgba(76, 175, 80, 0.3);
-  box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.6);
+  background: rgba(76, 175, 80, 0.4);
+  box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.7);
   transform: scale(1.1);
 }
 
@@ -334,10 +342,10 @@ button {
   left: 20px;
   width: 120px;
   height: 120px;
-  background: rgba(18, 14, 28, 0.95);
+  background: rgba(12, 10, 20, 0.96);
   border: 2px solid #FF007F;
   border-radius: 14px;
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
   z-index: 90;
   overflow: hidden;
   padding: 10px;
@@ -361,14 +369,14 @@ button {
   top: 80px;
   right: 20px;
   z-index: 120;
-  background: rgba(25, 18, 12, 0.95);
+  background: rgba(20, 14, 8, 0.96);
   border: 2px solid #FFC107;
   border-radius: 6px;
   padding: 10px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
   font-family: 'VT323', monospace;
   color: #FFFFFF;
 }
