@@ -4,6 +4,10 @@ import minecraftBg from '../assets/wallpaper/minecraft.png';
 import gtaBg from '../assets/wallpaper/gta.png';
 import tsushimaBg from '../assets/wallpaper/ghost of tushima.png';
 
+import minecraftSplash from '../assets/splash/minecraft.png';
+import gtaSplash from '../assets/splash/gta.jpg';
+import tsushimaSplash from '../assets/splash/ghostoftushima.jpg';
+
 const WorldContext = createContext();
 
 export const WORLDS = {
@@ -14,8 +18,9 @@ export const WORLDS = {
     icon: '🍁',
     symbol: '⛩️',
     bg: tsushimaBg,
-    accent: '#D4AF37',
-    primary: '#8B0000',
+    splash: tsushimaSplash,
+    accent: '#FF3B30',
+    primary: '#D4AF37',
     particle: 'leaves',
   },
   minecraft: {
@@ -25,8 +30,9 @@ export const WORLDS = {
     icon: '🟩',
     symbol: '🧱',
     bg: minecraftBg,
+    splash: minecraftSplash,
     accent: '#4CAF50',
-    primary: '#8B5E3C',
+    primary: '#6E5B38',
     particle: 'pixels',
   },
   gta: {
@@ -36,6 +42,7 @@ export const WORLDS = {
     icon: '🌆',
     symbol: '🏎️',
     bg: gtaBg,
+    splash: gtaSplash,
     accent: '#FF007F',
     primary: '#00F0FF',
     particle: 'bokeh',
