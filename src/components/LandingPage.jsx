@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { WorldProvider, useWorld, WORLDS } from '../context/WorldContext';
 import WorldParticles from './WorldParticles';
 import WorldSwitcher from './WorldSwitcher';
+import WorldSplashOverlay from './WorldSplashOverlay';
 import MinecraftHotbar from './MinecraftHotbar';
 import GtaGpsWidget from './GtaGpsWidget';
 import MinecraftAchievementToast from './MinecraftAchievementToast';
@@ -58,6 +59,9 @@ function PortfolioMain() {
 
   return (
     <div className="w-full min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] font-body relative selection:bg-[var(--accent-primary)] selection:text-white overflow-x-hidden">
+      {/* FULL SCREEN CINEMATIC GAME THEME SPLASH OVERLAY */}
+      <WorldSplashOverlay />
+
       {/* -------------------------------------------------- */}
       {/* WORLD WALLPAPER BACKGROUND & OVERLAY              */}
       {/* -------------------------------------------------- */}
