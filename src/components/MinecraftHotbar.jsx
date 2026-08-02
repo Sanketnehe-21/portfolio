@@ -8,8 +8,6 @@ export default function MinecraftHotbar({ onNavigate, activeSection }) {
     { id: 'projects', icon: '🗡️', label: 'Projects' },
     { id: 'experience', icon: '⚖️', label: 'Quests' },
     { id: 'skills', icon: '🧪', label: 'XP' },
-    { id: 'games', icon: '🎮', label: 'Games' },
-    { id: 'anime', label: 'Anime', icon: '⛩️' },
     { id: 'contact', icon: '✉️', label: 'Contact' },
   ];
 

@@ -10,8 +10,6 @@ import { Tape, StickyNote, Polaroid, NotebookChecklist, PinnedNote } from './Scr
 import HeroCraftingStructure from './HeroCraftingStructure';
 import Projects from './Projects';
 import TechStackSection from './TechStackSection';
-import GamesSection from './GamesSection';
-import AnimeSection from './AnimeSection';
 import AboutExperience from './AboutExperience';
 import Contact from './Contact';
 import Footer from './Footer';
@@ -30,7 +28,7 @@ function PortfolioMain() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'projects', 'experience', 'skills', 'games', 'anime', 'contact'];
+      const sections = ['hero', 'about', 'projects', 'experience', 'skills', 'contact'];
       for (const s of sections) {
         const el = document.getElementById(s);
         if (el) {
@@ -51,8 +49,6 @@ function PortfolioMain() {
     { id: 'projects', label: 'Projects', icon: '🗡️' },
     { id: 'experience', label: 'Experience', icon: '⚖️' },
     { id: 'skills', label: 'SkiLLs', icon: '🧪' },
-    { id: 'games', label: 'Games', icon: '🎮' },
-    { id: 'anime', label: 'Anime', icon: '⛩️' },
     { id: 'contact', label: 'Contact', icon: '✉️' },
   ];
 
@@ -88,7 +84,7 @@ function PortfolioMain() {
       {isGta && <GtaGpsWidget />}
 
       {/* -------------------------------------------------- */}
-      {/* TOP NAVIGATION — MULTI-WORLD HEADER (NO DARK TOGGLE)*/}
+      {/* TOP NAVIGATION — MULTI-WORLD HEADER               */}
       {/* -------------------------------------------------- */}
       <header className="fixed top-3 left-0 right-0 z-50 px-4 md:px-8 w-full flex items-center justify-between pointer-events-none">
         {/* Left Brand Badge */}
@@ -156,7 +152,7 @@ function PortfolioMain() {
             </h1>
 
             <p className="font-label text-sm sm:text-base text-[var(--accent-primary)] uppercase tracking-wide">
-              React Native Developer · Gamer · Anime Enthusiast
+              React Native Developer & Mobile Architect
             </p>
 
             {/* Tsushima Haiku Banner */}
@@ -265,17 +261,7 @@ function PortfolioMain() {
       <div className="relative z-20"><TechStackSection /></div>
 
       {/* -------------------------------------------------- */}
-      {/* 5. GAMES SECTION                                   */}
-      {/* -------------------------------------------------- */}
-      <div className="relative z-20"><GamesSection /></div>
-
-      {/* -------------------------------------------------- */}
-      {/* 6. ANIME SECTION                                   */}
-      {/* -------------------------------------------------- */}
-      <div className="relative z-20"><AnimeSection /></div>
-
-      {/* -------------------------------------------------- */}
-      {/* 7. CONTACT SECTION                                 */}
+      {/* 5. CONTACT SECTION                                 */}
       {/* -------------------------------------------------- */}
       <div className="relative z-20"><Contact /></div>
 
